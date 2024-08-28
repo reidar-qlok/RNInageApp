@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Bild klassificering";
+}
+<h2>Ladda upp en bild</h2>
+<form asp-action="ClassifyImage" method="post" enctype="multipart/form-data">
+    <input type="file" name="imageFile"/>
+    <input type="submit" value="Ladda upp och klassificera"/>
+</form>
+
+@if (ViewBag.PredictionLabel != null)
+{
+    <h3>Predicted label: @ViewBag.PredictionLabel</h3>
+    <h4>Scores:</h4>
+    <ul>
+        @foreach (var score in ViewBag.Scores)
+        {
+            <li>@score.Key: @score.Value</li>
+        }
+    </ul>
+}
